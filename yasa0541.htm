@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pertemuan 3</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }   
+        body {
+            background-repeat: no-repeat;
+            background-color: lightgrey;
+            background-image: linear-gradient(to right, rgb(44, 47, 61), rgb(108, 80, 112), rgb(190, 128, 167));
+            margin: 0;
+            color: white;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+
+        .background {
+            width: 100%;
+            height: 700px;
+        }
+
+        #background1 {
+            padding: 20px;
+            box-sizing: border-box;
+            width: 100%;
+            height: 700px;
+        }
+
+        #background1 .skill {
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            padding: 50px;
+            width: 400px;
+            height: 200px;
+            border-radius: 50px;
+        }
+
+        #background1 .skill .background_bar {
+            position: relative;
+            background-color: rgba(242, 145, 255, 0.5);
+            border-radius: 20px;
+            margin: 0 20px 0 20px;
+            width: 50px;
+            height: 100%;
+        }
+
+        #background1 .skill .background_bar .bar {
+            position: absolute;
+            border-radius: 20px;
+            bottom: 0;
+            background-color: rgba(168, 18, 143, 0.692);
+            width: 50px;
+        }
+
+        #background1 .skill .background_bar .bar .persen {
+            position: absolute;
+            top: -40px;
+            left: 14px;
+            color: white;
+        }
+
+        #background1 .skill .background_bar .bahasa {
+            color: white;
+            position: absolute;
+            left: 7px;
+            bottom: -30px;
+        }
+
+        .garis_navigasi {
+            position: fixed;
+            background-image: linear-gradient(to right, rgb(44, 47, 61), rgb(223, 136, 191));
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.205), 0 4px 5px rgba(0, 0, 0, 0.205);
+        }
+
+        .garis_navigasi .logo {
+            float: left;
+            margin-left: 20px;
+            width: 100px;
+            height: 50px;
+            background: url("landingpage.png") 0 0;
+        }
+
+        .garis_navigasi .navigasi {
+            float: left;
+            margin-left: 25vw;
+        }
+
+        .garis_navigasi ul {
+            list-style-type: none;
+            margin-top: 0;
+        }
+
+        .garis_navigasi ul li {
+            float: left;
+            border-radius: 10px;
+            background-color: transparent;
+            padding: 20px 45px 20px 45px;
+            transition: background-color .2s, color .2s, padding .2s, margin .2s;
+        }
+
+        .garis_navigasi ul li:hover:not(.beranda):not(.menu) {
+            background-color: rgba(73, 17, 73, 0.5);
+            color: gold;
+            cursor: pointer;
+            padding: 15px 40px 15px 40px;
+            margin: 5px 5px;
+        }
+
+        .menu {
+            font-size: 40px;
+            line-height: 7px;
+            padding: 0px;
+            margin-left: 150px;
+        }
+
+        .menu:hover {
+            color: blueviolet;
+            cursor: pointer;
+        }
+
+        .garis_navigasi ul li span {
+            width: 50px;
+            height: 50px;
+            top: 5%;
+            opacity: 1;
+            transition: opacity .5s;
+            position: absolute;
+            transform: scale(.5, .5);
+        }
+        .garis_navigasi ul li.beranda {
+            background-image: linear-gradient(to right, rgb(207, 0, 190), rgb(255, 102, 179));
+            color: white;
+        }
+
+        
+        .garis_navigasi ul li+li:hover span{
+            opacity: 0;
+        }
+
+        .garis_navigasi ul li+li+li:hover span{
+            opacity: 0;
+        }
+
+        .garis_navigasi ul li+li+li+li:hover span{
+            opacity: 0;
+        }
+
+        .garis_navigasi ul li.beranda span{
+            background: url("landingpage.png") -100px 0;
+        }
+
+        .garis_navigasi ul li.kontak span{
+            background: url("landingpage.png") -250px 0;
+
+        }
+
+        .garis_navigasi ul li.fitur span{
+            background: url("landingpage.png") -150px 0;
+        }
+
+        .garis_navigasi ul li.tentang span{
+            background: url("landingpage.png") -200px 0;
+        }
+
+        #kontak {
+            position: fixed;
+            z-index: 1;
+            left: 51%;
+            top: 50px;
+            background-color: rgb(148, 29, 148);
+            background-image: linear-gradient(to top right, purple, mediumorchid);
+            border-style: solid;
+            width: 130px;
+            height: 0;
+            border-radius: 0 0 300px 300px;
+            font-size: 0;
+            text-align: center;
+            transition: height .3s, font-size .3s, opacity .3s, padding .3s;
+        }
+
+        #kontak a {
+            text-decoration: none;
+        }
+
+        #kontak div {
+            color: white;
+        }
+
+        #kontak div:hover {
+            background-color: rgba(54, 20, 78, 0.5);
+        }
+
+        #kontak div#WA:before {
+            content: "";
+            position: absolute;
+            left: 5px;
+            bottom: 130px;
+            width: 50px;
+            height: 50px;
+            background: url("landingpage.png") -300px 0;
+            transform: scale(.5, .5);
+        }
+
+        #kontak div#FB:before {
+            content: "";
+            position: absolute;
+            left: 5px;
+            bottom: 65px;
+            width: 50px;
+            height: 50px;
+            background: url("landingpage.png") -350px 0;
+            transform: scale(.5, .5);
+        }
+
+        #fitur {
+            position: fixed;
+            z-index: 1;
+            left: 61%;
+            width: 120px;
+            height: 0;
+            border-radius: 0 0 300px 300px;
+            border-style: solid;
+            font-size: 0;
+            text-align: center;
+            color: white;
+            font-size: 0;
+            padding: 10px;
+            background-color: rgb(148, 29, 148);
+            background-image: linear-gradient(to top right, purple, mediumorchid);
+            transition: height .4s, font-size .4s, opacity .4s, padding .4s;
+        }
+
+        #fitur #emas {
+            margin-top: 70px;
+            background-color: gold;
+            background-image: linear-gradient(to top right, pink, gold, rgb(238, 63, 130));
+            border-radius: 50px;
+            box-shadow: 0 3px 9px rgba(95, 47, 7, 0.2), 0 3px 9px rgba(95, 47, 7, 0.2);
+        }
+
+        #fitur #perak {
+            margin-top: 20px;
+            background-color: gainsboro;
+            background-image: linear-gradient(to top right, pink, silver, rgb(139, 49, 212));
+            border-radius: 50px;
+            box-shadow: 0 3px 9px rgba(119, 83, 101, 0.2), 0 3px 9px rgba(119, 83, 101, 0.2);
+        }
+
+        #fitur #perunggu {
+            margin-top: 20px;
+            background-color: sienna;
+            background-image: linear-gradient(to top right, rgb(219, 145, 157), sienna, rgb(165, 0, 22));
+            border-radius: 50px;
+            box-shadow: 0 3px 9px rgba(168, 76, 48, 0.2), 0 3px 9px rgba(168, 76, 48, 0.2);
+        }
+
+        #tentang {
+            position: fixed;
+            z-index: 1;
+            display: block;
+            left: 72%;
+            background-color: rgb(148, 29, 148);
+            background-image: linear-gradient(to top right, purple, mediumorchid);
+            width: 130px;
+            height: 0;
+            border-radius: 0 0 300px 300px;
+            border-style: solid;
+            font-size: 0;
+            padding: 10px;
+            text-align: center;
+            transition: height .3s, font-size .3s, opacity .3s, padding .3s;
+        }
+
+        .isi {
+            position: absolute;
+            margin-top: 8%;
+            float: left;
+            width: 80%;
+            height: 60%;
+            z-index: 100;
+            animation: kekanan 1s ease-in normal .5s both;
+        }
+
+        .isi .deskripsi {
+            float: left;
+            width: 50%;
+            height: 100%;
+            word-break: keep-all;
+        }
+
+        .isi .deskripsi .judul {
+            margin: 0;
+            margin-top: 50px;
+            opacity: 0;
+            font-size: 3vw;
+            animation: fade 1s ease-in 1s normal both;
+        }
+
+        .isi .deskripsi .subjudul {
+            opacity: 0;
+            animation: fade 1s ease-in 1.8s normal both;
+        }
+
+        .isi .deskripsi .bacaan {
+            opacity: 0;
+            animation: fade 2s ease-in 2.5s normal both;
+        }
+
+        .isi .tombol {
+            margin-top: 50px;
+            opacity: 0;
+            animation: fade 1s ease-in 5.5s normal both;
+        }
+
+        @keyframes kekanan {
+            from {
+                left: 0;
+            }
+
+            to {
+                left: 10%;
+            }
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes fadeup {
+            from {
+                opacity: 0;
+                margin-top: 100px;
+            }
+
+            to {
+                opacity: 1;
+                margin-top: 0;
+            }
+        }
+
+        .isi .tombol a {
+            text-decoration: none;
+            color: white;
+            border-radius: 100px;
+            position: relative;
+            font-size: 20px;
+            background-image: linear-gradient(to right, indianred, rgb(119, 9, 110));
+            padding: 20px 90px;
+            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.2);
+            transition: padding .5s, box-shadow .5s;
+        }
+
+        .isi .tombol a:hover {
+            padding-left: 50px;
+            padding-right: 130px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .isi .tombol a::after {
+            position: absolute;
+            top: 1px;
+            opacity: 0;
+            font-size: 40px;
+            content: "\2192";
+            transition: all .5s;
+            right: 0;
+        }
+
+        .isi .tombol:hover a::after {
+            opacity: 1;
+            right: 40px;
+        }
+
+        #menu_kanan {
+            position: fixed;
+            right: 0;
+            z-index: 888;
+            width: 0%;
+            overflow: hidden;
+            height: 100%;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            background-image: linear-gradient(to bottom right, rgb(241, 135, 176), rgb(182, 65, 236));
+            transition: width .5s;
+        }
+
+        #menu_kanan ul {
+            margin-top: 60px;
+        }
+
+        #menu_kanan li {
+            background-color: rgba(163, 0, 141, 0.5);
+            padding: 20px;
+            padding-left: 50px;
+        }
+
+        #menu_kanan li:nth-child(2n-1) {
+            background-color: rgba(128, 0, 128, 0.5);
+        }
+
+        #menu_kanan li:hover {
+            color: gold;
+            border-left-style: solid;
+            border-left-width: 10px;
+        }
+
+        #menu_kanan li div {
+            position: absolute;
+            margin-top: 50px;
+            color: white;
+            display: none;
+        }
+
+        #menu_kanan li:hover div {
+
+            margin-left: -10px;
+            display: block;
+        }
+
+        .ankanan {
+            position: absolute;
+            top: 100px;
+            height: 70%;
+            z-index: 78;
+            width: 10px;
+            background-image: linear-gradient(to bottom right, pink, mediumorchid);
+            box-shadow: 2px 0 4px rgba(255, 180, 255, 0.205), 4px 0 4px rgba(255, 180, 255, 0.205);
+            border-radius: 0 50px 50px 0;
+            animation-name: kiri;
+            opacity: 0;
+            animation: kiri 5s alternate 2s infinite;
+            font-size: 0;
+            transition: width .5s, font-size .5s;
+        }
+
+        .ankanan:hover {
+            width: 100px;
+            font-size: 20px;
+        }
+        div[class^=plus]{
+            z-index: 0;
+        }
+        .plus {
+            font-size: 90px;
+            position: absolute;
+            top: 100px;
+            color: mediumorchid;
+            opacity: .5;
+            animation: plus 10s normal 3s both;
+        }
+
+        .plus2 {
+            width: 100px;
+            border-radius: 10px;
+            height: 100px;
+            position: absolute;
+            top: 220px;
+            background-color: mediumorchid;
+            opacity: .5;
+            animation: plus2 4s ease-out 5s both;
+        }
+
+        .plus3 {
+            width: 20px;
+            height: 20px;
+            border-style: solid;
+            position: absolute;
+            top: 130px;
+            border-color: mediumorchid;
+            opacity: .5;
+            animation: plus3 2s ease-out 2s both;
+        }
+
+        .plus4 {
+            width: 60px;
+            height: 60px;
+            border-style: solid;
+            border-width: 10px;
+            position: absolute;
+            top: 380px;
+            border-color: mediumorchid;
+            opacity: .5;
+            animation: plus4 4s ease-out 2s both;
+        }
+
+        .plus5 {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            top: 450px;
+            background-color: mediumorchid;
+            opacity: .5;
+            animation: plus5 2s ease-out 3s both;
+        }
+
+        .plus6 {
+            position: absolute;
+            top: 400px;
+            font-size: 200px;
+            color: mediumorchid;
+            opacity: .5;
+            animation: plus6 5s normal 4s both;
+        }
+
+        .plus7 {
+            width: 20px;
+            height: 20px;
+            border-style: solid;
+            border-radius: 20px;
+            border-width: 5px;
+            position: absolute;
+            top: 500px;
+            border-color: mediumorchid;
+            opacity: .5;
+            animation: plus7 4s ease-out 6s both;
+        }
+        
+        div[class^=plus]:hover {
+            opacity: 1;
+        }
+
+        @keyframes kiri {
+            from {
+                opacity: 0.1;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+        @keyframes plus {
+            from {
+                left: -50px;
+            }
+
+            to {
+                left: 300px;
+                top: 60px;
+                transform: rotate(150deg);
+            }
+        }
+
+        @keyframes plus2 {
+            from {
+                left: -100px;
+            }
+
+            to {
+                left: 150px;
+                top: 200px;
+                transform: rotate(170deg);
+            }
+        }
+
+        @keyframes plus3 {
+            from {
+                left: -100px;
+            }
+
+            to {
+                left: 50px;
+                top: 140px;
+                transform: rotate(60deg);
+            }
+        }
+
+        @keyframes plus4 {
+            from {
+                left: -100px;
+            }
+
+            to {
+                left: 350px;
+                transform: rotate(140deg);
+            }
+        }
+
+        @keyframes plus5 {
+            from {
+                left: -40px;
+            }
+
+            to {
+                left: 50px;
+                transform: rotate(140deg);
+            }
+        }
+
+        @keyframes plus6 {
+            from {
+                left: -120px;
+            }
+
+            to {
+                left: 200px;
+                top: 420px;
+                transform: rotate(165deg);
+            }
+        }
+
+        @keyframes plus7 {
+            from {
+                left: -100px;
+            }
+
+            to {
+                left: 120px;
+                top: 580px;
+                transform: rotate(100deg);
+            }
+        }
+
+        .garisdekor {
+            position: absolute;
+            z-index: 0;
+            width: 250px;
+            height: 580px;
+            border-style: solid;
+            border-width: 10px;
+            border-color: transparent plum plum transparent;
+            border-radius: 0 0 50px 0;
+            top: 0;
+            right: 55px;
+        }
+
+        .garisdekor2 {
+            position: absolute;
+            z-index: 0;
+            width: 308px;
+            height: 58px;
+            border-style: solid;
+            border-width: 10px;
+            border-color: mediumorchid transparent transparent mediumorchid;
+            border-radius: 50px 0 0 0;
+            top: 590px;
+            right: 40%;
+        }
+
+        .pembawa {
+            position: relative;
+            float: right;
+            background-color: brown;
+            background-image: linear-gradient(purple, mediumorchid);
+            width: 50%;
+            height: 100%;
+            box-sizing: border-box;
+            border: 20px solid plum;
+            border-radius: 50px 0 50px 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: fadeup 2s ease-in 4.5s normal forwards;
+        }
+
+        .tanah {
+            position: absolute;
+            z-index: 10;
+            background-color: brown;
+            background-image: linear-gradient(to left, purple 35%, purple 35%, fuchsia);
+            border-radius: 0 0 25px 25px;
+            border-top-style: solid;
+            border-top-color: green;
+            border-width: 20px;
+            left: 50px;
+            bottom: -30px;
+            width: 400px;
+            height: 100px;
+            box-sizing: border-box;
+        }
+
+        .rumput {
+            position: absolute;
+            z-index: 9;
+            width: 40px;
+            height: 40px;
+            bottom: 50px;
+            left: 58px;
+            border-radius: 20px 0 0 0;
+            transform: rotate(45deg);
+            background-color: green;
+            background-image: linear-gradient(pink 30%, fuchsia);
+        }
+
+        .lumut {
+            position: absolute;
+            z-index: 11;
+            width: 400px;
+            height: 20px;
+            bottom: 50px;
+            left: 50px;
+            background-color: pink;
+            background-image: linear-gradient(white, fuchsia);
+            box-shadow: 0 2px 5px rgba(185, 0, 56, 0.205);
+        }
+
+        .rumah {
+            position: absolute;
+            z-index: 8;
+            left: 100px;
+            bottom: 70px;
+        }
+
+        .dinding_depan {
+            position: absolute;
+            width: 90px;
+            height: 140px;
+            border-radius: 20px;
+            left: 0px;
+            background-color: darkviolet;
+            background-image: linear-gradient(to left, rgb(168, 15, 46), crimson);
+        }
+
+        .dinding_samping {
+            width: 200px;
+            height: 140px;
+            border-radius: 20px;
+            left: 60px;
+            background-color: crimson;
+            background-image: linear-gradient(to left, rgb(255, 78, 78), crimson, purple);
+            box-shadow: 10px 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .pintu {
+            position: absolute;
+            z-index: 100;
+            top: 60px;
+            margin-left: 120px;
+            width: 40px;
+            height: 80px;
+            background-color: brown;
+            background-image: linear-gradient(to right, magenta, crimson 80%);
+            border-radius: 10px;
+            animation: pintu 5s ease-out normal infinite;
+        }
+
+        @keyframes pintu {
+            65% {
+                background-image: linear-gradient(to right, magenta, crimson 80%);
+            }
+
+            66% {
+                background-image: linear-gradient(to right, rgb(255, 68, 255), crimson 80%);
+            }
+
+            68% {
+                background-image: linear-gradient(to right, magenta, crimson 80%);
+            }
+
+            70% {
+                background-image: linear-gradient(to right, rgb(255, 68, 255), crimson 80%);
+            }
+
+            100% {
+                background-image: linear-gradient(to right, rgb(255, 68, 255), crimson 80%);
+            }
+        }
+
+        .atap_samping {
+            position: absolute;
+            z-index: 3;
+            top: -40px;
+            width: 120px;
+            height: 60px;
+            left: 67px;
+            background-color: firebrick;
+            background-image: linear-gradient(to left, rgb(255, 0, 55), firebrick, rgb(117, 8, 8));
+            transform: skewX(45deg);
+            border-radius: 10px;
+        }
+
+        .atap_belakang {
+            position: absolute;
+            z-index: 2;
+            top: -40px;
+            width: 100px;
+            height: 65px;
+            left: 5px;
+            background-color: maroon;
+            background-image: conic-gradient(from 115deg at 0 0, rgb(88, 6, 6), rgb(255, 0, 55) 30%);
+            transform: skewX(-45deg);
+            border-radius: 10px;
+        }
+
+        .batang {
+            margin-top: 130px;
+            width: 100px;
+            height: 240px;
+            border-radius: 50%;
+            box-shadow: 30px -20px purple;
+            margin-left: 300px;
+            transform: rotate(-10deg);
+        }
+
+        .batang2 {
+            position: absolute;
+            top: 148px;
+            width: 70px;
+            height: 120px;
+            border-radius: 50%;
+            box-shadow: -30px -10px purple;
+            margin-left: 433px;
+            transform: rotate(30deg);
+        }
+
+        .daun {
+            position: absolute;
+            top: 190px;
+            width: 150px;
+            height: 80px;
+            border-radius: 100px;
+            background-color: limegreen;
+            background-image: linear-gradient(to bottom right, pink, fuchsia, darkorchid);
+            margin-left: 200px;
+            animation: daun 5s ease-in-out infinite;
+        }
+
+        .daun.nol {
+            animation: daun0 2s ease-in-out 5.3s alternate infinite;
+        }
+
+        .daun.satu {
+            animation: daun1 2s ease-in-out 5s alternate infinite;
+        }
+
+        .daun.dua {
+            animation: daun2 2s ease-in-out 5s alternate infinite;
+        }
+
+        .daun.tiga {
+            animation: daun3 2s ease-in-out 5.5s alternate infinite;
+        }
+
+        .daun.empat {
+            animation: daun4 2s ease-in-out 5s alternate infinite;
+        }
+
+        .daun.lima {
+            animation: daun5 2s ease-in-out 5.7s alternate infinite;
+        }
+
+        @keyframes daun0 {
+            from {
+                margin-left: 200px;
+            }
+
+            to {
+                margin-left: 240px;
+            }
+        }
+
+        @keyframes daun1 {
+            from {
+                margin-left: 200px;
+            }
+
+            to {
+                margin-left: 220px;
+            }
+        }
+
+        @keyframes daun2 {
+            from {
+                margin-left: 230px;
+            }
+
+            to {
+                margin-left: 260px;
+            }
+        }
+
+        @keyframes daun3 {
+            from {
+                margin-left: 274px;
+            }
+
+            to {
+                margin-left: 314px;
+            }
+        }
+
+        @keyframes daun4 {
+            from {
+                margin-left: 454px;
+            }
+
+            to {
+                margin-left: 474px;
+            }
+        }
+
+        @keyframes daun5 {
+            from {
+                margin-left: 404px;
+            }
+
+            to {
+                margin-left: 424px;
+            }
+        }
+
+        .bulan {
+            width: 150px;
+            height: 150px;
+            margin-top: 50px;
+            margin-left: 30px;
+            border-radius: 50%;
+            position: absolute;
+            background-color: palegoldenrod;
+            background-image: linear-gradient(to bottom right, palegoldenrod 40%, darkorchid);
+        }
+
+        .bulan .kelelawar .sayap {
+            width: 40px;
+            height: 60px;
+            border-radius: 50%;
+            margin-top: 90px;
+            box-shadow: 6px -2px rgb(58, 0, 27);
+            transform: rotate(-90deg);
+        }
+
+        .bulan .kelelawar2 {
+            top: -50px;
+            position: absolute;
+        }
+
+        .bulan .kelelawar2 .sayap {
+            width: 20px;
+            height: 30px;
+            border-radius: 50%;
+            margin-left: 60px;
+            margin-top: 90px;
+            box-shadow: 4px -2px rgb(58, 0, 27);
+            transform: rotate(-90deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="garis_navigasi">
+            <div class="logo">
+            </div>
+            <div class="navigasi">
+                <ul>
+                    <li class="beranda">BERANDA<span></span></li>
+                    <li class="kontak">KONTAK<span></span></li>
+                    <li class="fitur">FITUR<span></span></li>
+                    <li class="tentang">TENTANG<span></span></li>
+                    <li class="menu" style="padding: 0">_<br />_<br />_</li>
+                </ul>
+            </div>
+        </div>
+        <div id="menu_kanan">
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li>dekorasi</li>
+                <li>dekorasi</li>
+                <li>dekorasi</li>
+                <li>dekorasi</li>
+                <li>dekorasi</li>
+                <li style="border-top-style: solid; border-top-color: white;">Tentang Saya<div>Nama:<br />Muhammad
+                        Ilyasa Fadhlih<br /><br />Jurusan:<br />Programmer<br /><br />Usia:<br />17 Tahun</div>
+                </li>
+            </ul>
+        </div>
+        <div class="isi">
+            <div class="deskripsi">
+                <h1 class="judul">SELAMAT DATANG!</h1><br />
+                <h1 class="subjudul">Semua,</h1>
+                <p class="bacaan">Menggunakan HTML, CSS, dan JavaScript, serta Usaha, website dengan tema ungu ini
+                    tercipta, pada saat pengguna mengunjungi website ini, mereka langsung disuguhkan dengan transisi
+                    yang lembut, dan ilustasi yang serasi dengan warna latar, yang digambar sepenuhnya menggunakan CSS.
+                </p>
+                <div class="tombol"><a href="#background1">MULAI</a></div>
+            </div>
+            <div class="pembawa">
+                <div class="bulan">
+                    <div class="kelelawar">
+                        <div class="sayap"></div>
+                        <div class="sayap" style="margin-left:50px; margin-top: -80px; transform: rotate(-110deg);">
+                        </div>
+                    </div>
+                    <div class="kelelawar2">
+                        <div class="sayap"></div>
+                        <div class="sayap" style="margin-left:83px; margin-top: -40px; transform: rotate(-110deg);">
+                        </div>
+                    </div>
+                </div>
+                <div class="tanah"></div>
+                <div class="lumut"></div>
+                <div class="rumput"></div>
+                <div class="rumput" style="left: 108px;"></div>
+                <div class="rumput" style="left: 168px;"></div>
+                <div class="rumput" style="left: 228px;"></div>
+                <div class="rumput" style="left: 288px;"></div>
+                <div class="rumput" style="left: 348px;"></div>
+                <div class="rumput" style="left: 403px;"></div>
+                <div class="rumah">
+                    <div class="atap_samping"></div>
+                    <div class="atap_belakang"></div>
+                    <div class="dinding_depan"></div>
+                    <div class="dinding_samping">
+                        <div class="pintu"></div>
+                    </div>
+                </div>
+                <div class="pohon">
+                    <div class="daun nol"
+                        style="top: 70px; margin-left: 200px; width: 370px; height: 100px; background-color: forestgreen; background-image: linear-gradient(to bottom right, rgb(235, 0, 235), rgb(156, 18, 161));">
+                    </div>
+                    <div class="batang"></div>
+                    <div class="batang2"></div>
+                    <div class="daun satu" style="top: 70px; margin-left: 200px; height: 60px"></div>
+                    <div class="daun dua" style="top: 20px; margin-left: 230px;width: 110px;"></div>
+                    <div class="daun tiga" style="top: -20px; margin-left: 274px; width: 200px; height: 100px;">
+                    </div>
+                    <div class="daun empat" style="top: 80px; margin-left: 454px; width: 130px; height: 70px;">
+                    </div>
+                    <div class="daun lima" style="top: 40px; margin-left: 404px; width: 120px; height: 60px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="ankanan">
+            <p></p>
+        </div>
+        <div class="plus" style="user-select: none;">+</div>
+        <div class="plus2"></div>
+        <div class="plus3"></div>
+        <div class="plus4"></div>
+        <div class="plus5"></div>
+        <div class="plus6" style="user-select: none;">+</div>
+        <div class="plus7"></div>
+        <div class="garisdekor"></div>
+        <div class="garisdekor2"></div>
+    </div>
+    <div id="background1">
+        <div style="width:500px; height:100%; margin:auto;">
+            <center>
+            <p style="font-size:50px; border-bottom: 5px solid white; padding: 20px">Tentang Saya</p>
+            <br/>
+            <p style="font-size:25px">Muhammad Ilyasa Fadhlih<br/><span style="font-size:12px">(Nama)</span></p>
+            <br/>
+            <p style="font-size:25px">Jalan-jalan<br/><span style="font-size:12px">(Hobi)</span></p>
+            <br/>
+            <p style="font-size:25px">Laki-laki<br/><span style="font-size:12px">(Jenis kelamin)</span></p>
+            <br/>
+            <p style="font-size:25px">Semarang<br/><span style="font-size:12px">(Tempat Lahir)</span></p>
+            </center>
+        </div>
+    </div>
+    <div id="background1">
+        <p align="center" style="font-size: 50px; margin-top:150px; ">KEMAMPUAN</p>
+        <div class="skill">
+            <div class="background_bar">
+                <div class="bar" style="height: 70%;">
+                    <div class="persen">70</div>
+                </div>
+                <div class="bahasa">HTML</div>
+            </div>
+            <div class="background_bar">
+                <div class="bar" style="height: 35%;">
+                    <div class="persen">35</div>
+                </div>
+                <div class="bahasa">CSS</div>
+            </div>
+            <div class="background_bar">
+                <div class="bar" style="height: 21%;">
+                    <div class="persen">21</div>
+                </div>
+                <div class="bahasa" style="left: -15px;">JavaScript</div>
+            </div>
+            <div class="background_bar">
+                <div class="bar" style="height: 10%;">
+                    <div class="persen">10</div>
+                </div>
+                <div class="bahasa">Java</div>
+            </div>
+        </div>
+    </div>
+    <div id="background1">
+        <center>
+            <p style="margin: 70px 0; font-size: 40px;">IKHTISAR</p>
+            <h1>900+</h1>
+            <h4>TOTAL BARIS</h4><br /><br />
+            <h1>20350+</h1>
+            <h4>JUMLAH KARAKTER</h4><br /><br />
+            <h1>720+</h1>
+            <h4>CSS BARIS</h4><br /><br />
+        </center>
+    </div>
+    <script>
+        var menu = document.getElementById("menu_kanan");
+        document.getElementsByClassName("menu")[0].addEventListener("click", kanan);
+        function kanan() {
+            if (menu.style.width == "20%") {
+                menu.style.width = "0"
+            } else {
+                menu.style.width = "20%";
+            }
+        }
+    </script>
+</body>
+
+</html>
