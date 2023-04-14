@@ -1,0 +1,78 @@
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Righteous', cursive;
+    background-color: #6c5070ee;
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+nav {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+nav.scroll {
+    position: fixed;
+    background-color: #aaaaaa90;
+}
+
+nav :hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    padding: 15px 35px 15px 35px;
+    margin: 5px 10px;
+}
+
+nav>* {
+    position: relative;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 20px 45px 20px 45px;
+    transition: background-color .2s, color .2s, padding .2s, margin .2s;
+}
+
+section {
+    position: relative;
+    height: 100svh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 5rem;
+    padding-inline: 5rem;
+}
+
+section>* {
+    flex: 1;
+}
+
+section:nth-child(1) {
+    border-bottom: 50px solid white;
+    background-size: 150%;
+    background-image: linear-gradient(to bottom right, rgb(44, 47, 61), #6c5070ee, #be80a7aa), url("./pattern.jpeg");
+}
+
+h1 {
+    margin: 0;
+    margin-top: 1vw;
+    opacity: 1;
+    font-size: 5rem;
+}
+
+canvas {
+    background-image: linear-gradient(purple, mediumorchid);
+    box-sizing: border-box;
+    border: 1rem solid plum;
+}
